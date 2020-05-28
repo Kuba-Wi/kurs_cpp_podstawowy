@@ -1,8 +1,17 @@
 #include <iostream>
+#include <memory>
 
 // TODO: Implement foo()
 // It should take 2 int values and return their product as a shared_ptr.
 // Additionally, check how many owners are there.
+
+std::shared_ptr<int> foo(int first, int second) {
+    auto ptr = std::make_shared<int>(first * second);
+
+    std::cout << "num: " << *ptr << " | owners: " << ptr.use_count() << "\n";
+
+    return ptr;
+}
 
 int main() {
     auto number = foo(10, 20);
